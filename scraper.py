@@ -65,13 +65,14 @@ def get_page(url):
     return url_name_list
 @with_goto
 def main():
-    print("----------------------------------------------------------------------")
-    print("请输入剧名 或 剧名 第几季(输入quit退出)")
-    name=input()
+
+    print("=========================================================")
+    name=input("请输入剧名(输入quit退出):")
     if name == "quit":
         exit()
     url="http://www.yikedy.co/search?query="+name
     dlist=get_page(url)
+    print("\n")
     if(dlist):
         num=0
         count=0
@@ -82,18 +83,23 @@ def main():
             elif num==0 and count==len(dlist)-1:
                 goto .end
             count+=1
-        dest=int(input("请输入你所想要看剧的编号:"))
+        dest=int(input("\n\n请输入剧的编号(输100跳过此次搜寻):"))
+        if dest == 100:
+            goto .end
         x=0
-        print("以下为下载链接")
+        print("\n以下为下载链接:\n")
         for i in dlist:
             if(x==dest):
                 for durl in search_durl(i[0]):
-                    print(f"{durl}")
+                    print(f"{durl}\n")
+
+                print("\n")
                 break
             x+=1
     else:
         label .end
-        print("没找到\n")
+        print("没找到或不想看\n")
+
 print("本软件由CLY.所有\n\n")
 while(True):
     main()
