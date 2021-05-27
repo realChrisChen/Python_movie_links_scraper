@@ -7,7 +7,7 @@ from goto import with_goto
 
 def get_content_url_name(url):
     send_headers = {
-     "User-Agent":UserAgent().random,
+     "User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
     "Connection": "keep-alive",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
     "Accept-Language": "zh-CN,zh;q=0.8"
@@ -24,7 +24,7 @@ def get_content_url_name(url):
 
 def get_content(url):
     send_headers = {
-     "User-Agent":UserAgent().random,
+     "User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
     "Connection": "keep-alive",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
     "Accept-Language": "zh-CN,zh;q=0.8"
@@ -49,7 +49,7 @@ def search_durl(url):
     return download_list
 def get_page(url):
     send_headers = {
-     "User-Agent":UserAgent().random,
+     "User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
     "Connection": "keep-alive",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
     "Accept-Language": "zh-CN,zh;q=0.8"
@@ -89,13 +89,16 @@ def main():
         x=0
         print("\n以下为下载链接:\n")
         for i in dlist:
-            if(x==dest):
-                for durl in search_durl(i[0]):
-                    print(f"{durl}\n")
+            if (name in i[1]):
+                if(x==dest):
+                    for durl in search_durl(i[0]):
+                        print(f"{durl}\n")
 
-                print("\n")
-                break
-            x+=1
+                    print("\n")
+
+                    break
+                x+=1
+
     else:
         label .end
         print("没找到或不想看\n")
